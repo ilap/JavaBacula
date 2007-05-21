@@ -1,0 +1,11 @@
+# TODO of JavaBacula
+
+	* Director name on root tree instead of "Director",
+	* Statusbar (connection, available channels, running jobs etc.,
+	* Dynamic subtree creations for Storage,
+	* Backup, restore panel,
+	* Keyboard events for widgets,
+	* JTextArea refresh for Console,
+	* Icons for console en messages,
+	* TableModel and Listener for	Messages,
+	* CoolTable HeaderCellRenderer rewriting,	

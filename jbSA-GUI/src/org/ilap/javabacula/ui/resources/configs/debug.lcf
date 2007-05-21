@@ -1,0 +1,18 @@
+# Append
+# -Dlog4j.configuration=org/ilap/javabacula/ui/resources/configs/debug.lcf
+# to the command line
+#
+
+#
+# Just for the DEBUG
+#
+log4j.rootCategory=DEBUG, FULL
+log4j.category.org.ilap.javabacula=DEBUG
+# 
+log4j.appender.FULL=org.apache.log4j.RollingFileAppender
+log4j.appender.FULL.File=${user.dir}/jbSA_debug.log
+log4j.appender.FULL.MaxBackupIndex=4
+log4j.appender.FULL.MaxFileSize=1000000
+log4j.appender.FULL.layout=org.apache.log4j.PatternLayout
+log4j.appender.FULL.layout.ConversionPattern=%d %5p: %m (%F:%L)%n
+log4j.appender.FULL.Threshold=DEBUG
