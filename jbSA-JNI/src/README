@@ -1,0 +1,9 @@
+The src directory consist the libJavaBacula shared object source files.
+This shared object is the interface between Java and Bacula.
+The libJavaBacula is consist the following source files:
+BaculaConnection: this is the interface file between the jvm and native 
+BaculaNativeConnection: is the C++ class that can 
+connect to the specified bacula daemon (Strorage, Client, Director)
+NativeUtils: The utilities for the JVM
+
+

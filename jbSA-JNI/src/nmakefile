@@ -1,0 +1,210 @@
+#
+# @(#)nmakefile	1.2 05/08/10
+#
+# Copyright (c) 2005 NetXpert, Ltd. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the JNI interface for Java Bacula
+#
+
+#
+# Change this to reflect your setting.  Or override it at the make
+# command line:
+#	C:\> nmake JDK=x:\path\to\your\jdk
+#
+JDK     = e:\Devel\Java\jdk1.5.0_04
+
+CFLAGS     = -nologo  -MD -W3 -GX -Zi -DFULL_LOCATION -DDEBUG -DHAVE_CONSOLE -DHAVE_WIN32 -DWIN32 -I$(JDK)\include -I$(JDK)\include\win32 -I. -I..\.. -I..\..\win32\compat -I..\..\..\..\depkgs-win32\pthreads -Fo"$(DISTDIR)\\" -Fd"$(DISTDIR)\\" -FD -GZ 
+CPPFLAGS = $(CFLAGS)
+
+# C++ wrapper:)
+LIBDIR    = ..\..\win32\lib
+
+WIN32DIR  = ..\..\win32
+
+DISTDIR   = .\Release
+TARGETDIR  =
+OUTLIBDIR  = .\lib 
+DLLDIR     = E:\Devel\Libraries\DLLs\
+
+
+# Classes where netbeans built they
+#CLASSDIR   = E:\Devel\WorkingDirectory\JavaBacula\build\classes\
+CLASSDIR   = "E:\Devel\WorkingDirectory\Java Bacula System\jbSA-API\build\classes"
+PACKAGEDIR = org\netxpert\javabacula\jni
+PACKAGE    = org.netxpert.javabacula.jni
+
+# Other variables.
+#
+CLASSES    = $(CLASSDIR)\BaculaChannel.class
+
+OBJS       = BaculaChannel.obj \
+	BaculaTest.obj\
+	NativeUtils.obj\
+	BaculaChannelThread.obj\
+	$(LIBDIR)\address_conf.obj \
+	$(LIBDIR)\alist.obj \
+	$(LIBDIR)\base64.obj \
+	$(LIBDIR)\berrno.obj \
+	$(LIBDIR)\bnet.obj \
+	$(LIBDIR)\bsys.obj \
+	$(LIBDIR)\btime.obj \
+	$(LIBDIR)\btimers.obj \
+	$(LIBDIR)\cram-md5.obj \
+	$(LIBDIR)\crc32.obj \
+	$(LIBDIR)\dlist.obj \
+	$(LIBDIR)\edit.obj \
+	$(WIN32DIR)\compat\getopt.obj \
+	$(LIBDIR)\hmac.obj \
+	$(LIBDIR)\idcache.obj \
+	$(LIBDIR)\jcr.obj \
+	$(LIBDIR)\lex.obj \
+	$(LIBDIR)\md5.obj \
+	$(LIBDIR)\mem_pool.obj \
+	$(LIBDIR)\message.obj \
+	$(LIBDIR)\queue.obj \
+	$(LIBDIR)\rwlock.obj \
+	$(LIBDIR)\scan.obj \
+	$(LIBDIR)\serial.obj \
+	$(LIBDIR)\sha1.obj \
+	$(LIBDIR)\smartall.obj \
+	$(LIBDIR)\tls.obj \
+	$(LIBDIR)\util.obj \
+	$(LIBDIR)\watchdog.obj \
+	$(LIBDIR)\winapi.obj \
+	$(WIN32DIR)\compat\compat.obj \
+	$(WIN32DIR)\compat\print.obj
+#	$(LIBDIR)\res.obj \
+#	$(LIBDIR)\parse_conf.obj \
+
+MAINOBJ   = $(DISTDIR)\BaculaChannel.obj
+EXEOBJ    = $(DISTDIR)\BaculaTest.obj
+
+LINKOBJS    = $(DISTDIR)\NativeUtils.obj\
+	$(DISTDIR)\BaculaChannelThread.obj\
+	$(DISTDIR)\address_conf.obj \
+	$(DISTDIR)\alist.obj \
+	$(DISTDIR)\base64.obj \
+	$(DISTDIR)\berrno.obj \
+	$(DISTDIR)\bnet.obj \
+	$(DISTDIR)\bsys.obj \
+	$(DISTDIR)\btime.obj \
+	$(DISTDIR)\btimers.obj \
+	$(DISTDIR)\cram-md5.obj \
+	$(DISTDIR)\crc32.obj \
+	$(DISTDIR)\dlist.obj \
+	$(DISTDIR)\edit.obj \
+	$(DISTDIR)\getopt.obj \
+	$(DISTDIR)\hmac.obj \
+	$(DISTDIR)\idcache.obj \
+	$(DISTDIR)\jcr.obj \
+	$(DISTDIR)\lex.obj \
+	$(DISTDIR)\md5.obj \
+	$(DISTDIR)\mem_pool.obj \
+	$(DISTDIR)\message.obj \
+	$(DISTDIR)\queue.obj \
+	$(DISTDIR)\rwlock.obj \
+	$(DISTDIR)\scan.obj \
+	$(DISTDIR)\serial.obj \
+	$(DISTDIR)\sha1.obj \
+	$(DISTDIR)\smartall.obj \
+	$(DISTDIR)\tls.obj \
+	$(DISTDIR)\util.obj \
+	$(DISTDIR)\watchdog.obj \
+	$(DISTDIR)\winapi.obj \
+	$(DISTDIR)\compat.obj \
+	$(DISTDIR)\print.obj
+#	$(DISTDIR)\res.obj \
+#	$(DISTDIR)\parse_conf.obj \
+
+
+.SUFFIXES: .java .class
+
+#
+# Targets
+#
+run: build FORCE
+	@echo ------------------
+	@echo Coping DLL's....
+	@echo ------------------
+	-copy .\lib\*.dll $(DLLDIR)
+#$(JDK)\bin\java.exe Main
+
+build: checkjdk BaculaChannel.dll BaculaTest.exe FORCE
+
+#
+BaculaChannel.h:
+	$(JDK)\bin\javah -o BaculaChannel.h -classpath $(CLASSDIR) -jni $(PACKAGE).BaculaChannel
+
+#
+# Build .c files.
+#
+BaculaChannel.dll: $(OBJS)
+	link -nologo -debug -dll $(LDFLAGS) wsock32.lib pthreadVCE.lib /nologo /subsystem:console  -machine:I386 -out:$(OUTLIBDIR)\BaculaInterface.dll -libpath:"../../../../depkgs-win32/pthreads" $(MAINOBJ) $(LINKOBJS)
+
+BaculaTest.exe: $(OBJS) 
+	link -nologo -debug $(LDFLAGS) wsock32.lib pthreadVCE.lib /nologo /subsystem:console  -machine:I386 -out:$(OUTLIBDIR)\BaculaTest.exe -libpath:"../../../../depkgs-win32/pthreads"  $(EXEOBJ) $(LINKOBJS)
+
+
+
+BaculaChannel.cpp: BaculaChannel.h
+
+BaculaTest.cpp:
+BaculaChannelThread.cpp:
+NativeUtils.cpp:
+$(LIBDIR)\address_conf.cpp:
+$(LIBDIR)\alist.cpp:
+$(LIBDIR)\base64.cpp:
+$(LIBDIR)\berrno.cpp:
+$(LIBDIR)\bnet.cpp:
+$(LIBDIR)\bsys.cpp:
+$(LIBDIR)\btime.cpp:
+$(LIBDIR)\btimers.cpp:
+$(LIBDIR)\cram-md5.cpp:
+$(LIBDIR)\crc32.cpp:
+$(LIBDIR)\dlist.cpp:
+$(LIBDIR)\edit.cpp:
+$(WIN32DIR)\compat\getopt.cpp:
+$(LIBDIR)\hmac.cpp:
+$(LIBDIR)\idcache.cpp:
+$(LIBDIR)\jcr.cpp:
+$(LIBDIR)\lex.cpp:
+$(LIBDIR)\md5.cpp:
+$(LIBDIR)\mem_pool.cpp:
+$(LIBDIR)\message.cpp:
+# $(LIBDIR)\parse_conf.cpp:
+$(LIBDIR)\queue.cpp:
+# $(LIBDIR)\res.cpp:
+$(LIBDIR)\rwlock.cpp:
+$(LIBDIR)\scan.cpp:
+$(LIBDIR)\serial.cpp:
+$(LIBDIR)\sha1.cpp:
+$(LIBDIR)\smartall.cpp:
+$(LIBDIR)\tls.cpp:
+$(LIBDIR)\util.cpp:
+$(LIBDIR)\watchdog.cpp:
+$(LIBDIR)\winapi.cpp:
+$(WIN32DIR)\compat\compat.cpp:
+$(WIN32DIR)\compat\print.cpp:
+
+
+#
+# Check that the user has a valid JDK install.  This will cause a
+# premature death if JDK is not defined.
+#
+checkjdk: $(JDK)\bin\java.exe
+
+#
+# Help deal with phony targets.
+#
+FORCE: ;
+
+#
+# Clean all .
+#
+test:
+	
+clean:
+	-del *.class BaculaInterface.dll Release\*.* .\lib\*.obj .\lib\*.pdb .\lib\*.exp .\lib\*.lib .\lib\*.exp .\lib\*.ilk
+	-del BaculaChannel.h
