@@ -110,8 +110,8 @@ public abstract class CommonDaemon extends BaculaObject implements IStatusListen
     protected String distVersion    = new String();
     
     protected Date  started;
-    protected Integer jobsSince = new Integer(0);     
-    protected Integer maxJobs   = new Integer(0);    
+    protected Long jobsSince = new Long(0);     
+    protected Long maxJobs   = new Long(0);    
     
     private boolean alive = false;
 
@@ -300,7 +300,7 @@ public abstract class CommonDaemon extends BaculaObject implements IStatusListen
      * 
      * @return the number of ran jobs since this daemon started.
      */
-    public Integer getJobsSince() {
+    public Long getJobsSince() {
         return jobsSince;
     }
 
@@ -309,8 +309,8 @@ public abstract class CommonDaemon extends BaculaObject implements IStatusListen
      * 
      * @param jobsSince   The number of running jobs since this daemon started.
      */
-    public synchronized void setJobsSince(Integer jobsSince) {
-        Integer oJobsSince = getJobsSince();
+    public synchronized void setJobsSince(Long jobsSince) {
+        Long oJobsSince = getJobsSince();
         this.jobsSince = jobsSince;
         firePropertyChange(PROPNAME_JOBSSINCE, oJobsSince, this.jobsSince);
     }
@@ -320,12 +320,12 @@ public abstract class CommonDaemon extends BaculaObject implements IStatusListen
         return n==null?"Not known":n;
     }
 
-    public Integer getMaxJobs() {
+    public Long getMaxJobs() {
         return maxJobs;
     }
 
-    public void setMaxJobs(Integer maxJobs) {
-        Integer oMaxJobs = getMaxJobs();
+    public void setMaxJobs(Long maxJobs) {
+        Long oMaxJobs = getMaxJobs();
         this.maxJobs = maxJobs;
         firePropertyChange(PROPNAME_MAXJOBS, oMaxJobs, this.maxJobs);
 

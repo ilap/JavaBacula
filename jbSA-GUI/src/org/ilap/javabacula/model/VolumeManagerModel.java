@@ -107,14 +107,14 @@ public class VolumeManagerModel extends BaculaObjectManagerModel {
 
                     volume = (Volume) this.getBaculaManager().createBaculaItem();
 
-                    volume.setMediaId(new Integer(tokens[0].trim()));
+                    volume.setMediaId(new Long(tokens[0].trim()));
                     volume.setName(tokens[1].trim());
                     volume.setVolStatus(tokens[2].trim());
                     volume.setPool(pool);
                     volume.setEnabled(tokens[3].trim() == "1");
-                    volume.setVolBytes(new Integer(tokens[4].trim()));
-                    volume.setVolFiles(new Integer(tokens[5].trim()));
-                    volume.setVolRetention(new Integer(tokens[6].trim()));
+                    volume.setVolBytes(new Long(tokens[4].trim()));
+                    volume.setVolFiles(new Long(tokens[5].trim()));
+                    volume.setVolRetention(new Long(tokens[6].trim()));
                     volume.setRecycle(tokens[7].trim() == "1");
                     volume.setSlot(new Integer(tokens[8].trim()));
                     volume.setInChanger(tokens[9].trim() == "1");

@@ -574,7 +574,7 @@ FST987 on device "L25-0" (/opt/bacula/filestorages1/drive0)
                 t = line.replaceAll("[ ].*","");                
                 line = line.substring(t.length() + 1); 
                 
-                daemon.setJobsSince(new Integer(t));
+                daemon.setJobsSince(new Long(t));
             } else if (line.startsWith(" Heap")) {
                 //  Heap: bytes=31,049 max_bytes=123,843 bufs=120 max_bufs=131
                 // *** FIXME *** Not implemented at the moment

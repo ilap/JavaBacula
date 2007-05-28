@@ -48,13 +48,13 @@ public class Volume extends BaculaObject {
     public static final String PROPNAME_MEDIATYPE       = "mediaType";  //10
     public static final String PROPNAME_LASTWRITTEN     = "lastWritten";//11
 
-    private Integer mediaId;
+    private Long mediaId;
     private String volStatus;
     private Pool pool;
     private boolean enabled;
-    private Integer volBytes;
-    private Integer volFiles;
-    private Integer volRetention;
+    private Long volBytes;
+    private Long volFiles;
+    private Long volRetention;
     private boolean recycle;
     private Integer slot;
     private boolean inChanger;  
@@ -71,11 +71,11 @@ public class Volume extends BaculaObject {
     public void initializeObject() {}
     public void releaseObject() {}
 
-    public Integer getMediaId() {
+    public Long getMediaId() {
         return mediaId;
     }
 
-    public void setMediaId(Integer mediaId) {
+    public void setMediaId(Long mediaId) {
         this.mediaId = mediaId;
     }
 
@@ -87,27 +87,27 @@ public class Volume extends BaculaObject {
         this.enabled = enabled;
     }
 
-    public Integer getVolBytes() {
+    public Long getVolBytes() {
         return volBytes;
     }
 
-    public void setVolBytes(Integer volBytes) {
+    public void setVolBytes(Long volBytes) {
         this.volBytes = volBytes;
     }
 
-    public Integer getVolFiles() {
+    public Long getVolFiles() {
         return volFiles;
     }
 
-    public void setVolFiles(Integer volFiles) {
+    public void setVolFiles(Long volFiles) {
         this.volFiles = volFiles;
     }
 
-    public Integer getVolRetention() {
+    public Long getVolRetention() {
         return volRetention;
     }
 
-    public void setVolRetention(Integer volRetention) {
+    public void setVolRetention(Long volRetention) {
         this.volRetention = volRetention;
     }
 

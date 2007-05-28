@@ -92,7 +92,7 @@ public class JobManagerModel  extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("Enabled")) {
                             job.setEnabled(tokens[i+1] == "1");
                         } else if (tokens[i].equals("MaxJobs")) {
-                            job.setMaxJobs(new Integer (tokens[i+1]));
+                            job.setMaxJobs(new Long(tokens[i+1]));
                         } else if (tokens[i].equals("Resched")) {
                             job.setReschedule(tokens[i+1] == "1");
                         } else if (tokens[i].equals("Times")) {

@@ -83,7 +83,7 @@ public class ClientManagerModel extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("FDport")) {
                             cld.setPort(new Integer(tokens[i+1]));
                         } else if (tokens[i].equals("MaxJobs")) {
-                            cld.setMaxJobs(new Integer(tokens[i+1]));
+                            cld.setMaxJobs(new Long(tokens[i+1]));
                         } else if (tokens[i].equals("JobRetention")) {
                             cld.setJobRetention(tokens[i+1]);
                         } else if (tokens[i].equals("FileRetention")) {

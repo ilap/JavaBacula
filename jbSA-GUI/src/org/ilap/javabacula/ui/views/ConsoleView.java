@@ -128,6 +128,7 @@ public class ConsoleView extends BaculaView {
         jXPanel1.setBackground(new java.awt.Color(255, 255, 255));
         consoleTextArea.setColumns(20);
         consoleTextArea.setEditable(false);
+        consoleTextArea.setFont(new java.awt.Font("Monospaced", 0, 12));
         consoleTextArea.setRows(5);
         jScrollPane1.setViewportView(consoleTextArea);
 

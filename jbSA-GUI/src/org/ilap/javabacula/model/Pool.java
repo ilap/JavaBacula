@@ -63,8 +63,8 @@ public class Pool extends BaculaObject {
     private String  poolType;    
     private boolean useCat;
     private boolean useOnce;
-    private Integer catFiles;
-    private Integer maxVols;
+    private Long catFiles;
+    private Long maxVols;
     private boolean autoPrune;
     private String  volRetention;
     private String  volUse;
@@ -74,11 +74,11 @@ public class Pool extends BaculaObject {
     private String  cleaningPrefix;
     private boolean recycleOldest;
     private boolean purgeOldest;
-    private Integer maxVolJobs;
-    private Integer maxVolFiles;
+    private Long maxVolJobs;
+    private Long maxVolFiles;
     private String  migTime;
-    private Integer migHiBytes;
-    private Integer migLoBytes;
+    private Long migHiBytes;
+    private Long migLoBytes;
 
         /** Creates a new instance of Pool */
     public Pool() {
@@ -114,22 +114,22 @@ public class Pool extends BaculaObject {
         firePropertyChange(PROPNAME_USEONCE, oUseOnce, this.useOnce);
     }
 
-    public Integer getCatFiles() {
+    public Long getCatFiles() {
         return catFiles;
     }
 
-    public void setCatFiles(Integer catFiles) {
-        Integer oCatFiles = getCatFiles();
+    public void setCatFiles(Long catFiles) {
+        Long oCatFiles = getCatFiles();
         this.catFiles = catFiles;
         firePropertyChange(PROPNAME_CATFILES, oCatFiles, this.catFiles);
     }
 
-    public Integer getMaxVols() {
+    public Long getMaxVols() {
         return maxVols;
     }
 
-    public void setMaxVols(Integer maxVols) {
-        Integer oMaxVols = getMaxVols();
+    public void setMaxVols(Long maxVols) {
+        Long oMaxVols = getMaxVols();
         this.maxVols = maxVols;
         firePropertyChange(PROPNAME_MAXVOLS, oMaxVols, this.maxVols);
     }
@@ -224,22 +224,22 @@ public class Pool extends BaculaObject {
         firePropertyChange(PROPNAME_PURGEOLDEST, oPurgeOldest, this.purgeOldest);
     }
 
-    public Integer getMaxVolJobs() {
+    public Long getMaxVolJobs() {
         return maxVolJobs;
     }
 
-    public void setMaxVolJobs(Integer maxVolJobs) {
-        Integer oMaxVolJobs = getMaxVolJobs();
+    public void setMaxVolJobs(Long maxVolJobs) {
+        Long oMaxVolJobs = getMaxVolJobs();
         this.maxVolJobs = maxVolJobs;
         firePropertyChange(PROPNAME_MAXVOLJOBS, oMaxVolJobs, this.maxVolJobs);
     }
 
-    public Integer getMaxVolFiles() {
+    public Long getMaxVolFiles() {
         return maxVolFiles;
     }
 
-    public void setMaxVolFiles(Integer maxVolFiles) {
-        Integer oMaxVolFiles = getMaxVolFiles();
+    public void setMaxVolFiles(Long maxVolFiles) {
+        Long oMaxVolFiles = getMaxVolFiles();
         this.maxVolFiles = maxVolFiles;
         firePropertyChange(PROPNAME_MAXVOLFILES, oMaxVolFiles, this.maxVolFiles);
     }
@@ -254,22 +254,22 @@ public class Pool extends BaculaObject {
         firePropertyChange(PROPNAME_MIGTIME, oMigTime, this.migTime);
     }
 
-    public Integer getMigHiBytes() {
+    public Long getMigHiBytes() {
         return migHiBytes;
     }
 
-    public void setMigHiBytes(Integer migHiBytes) {
-        Integer oMigHiBytes = getMigHiBytes();
+    public void setMigHiBytes(Long migHiBytes) {
+        Long oMigHiBytes = getMigHiBytes();
         this.migHiBytes = migHiBytes;
         firePropertyChange(PROPNAME_MIGHIBYTES, oMigHiBytes, this.migHiBytes);
     }
 
-    public Integer getMigLoBytes() {
+    public Long getMigLoBytes() {
         return migLoBytes;
     }
 
-    public void setMigLoBytes(Integer migLoBytes) {
-        Integer oMigLoBytes = getMigLoBytes();
+    public void setMigLoBytes(Long migLoBytes) {
+        Long oMigLoBytes = getMigLoBytes();
         this.migLoBytes = migLoBytes;
         firePropertyChange(PROPNAME_MIGLOBYTES, oMigLoBytes, this.migLoBytes);
     }

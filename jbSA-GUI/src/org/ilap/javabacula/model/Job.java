@@ -47,7 +47,7 @@ public class Job extends BaculaObject {
     private String level;
     private Integer priority;
     private boolean enabled;
-    private Integer maxJobs;
+    private Long maxJobs;
     private boolean reschedule;
     private Integer times;
     private Integer interval;
@@ -100,12 +100,12 @@ public class Job extends BaculaObject {
         firePropertyChange(PROPNAME_ENABLED, oEnabled, this.enabled);
     }
 
-    public Integer getMaxJobs() {
+    public Long getMaxJobs() {
         return maxJobs;
     }
 
-    public void setMaxJobs(Integer maxJobs) {
-        Integer oMaxJobs = getMaxJobs();
+    public void setMaxJobs(Long maxJobs) {
+        Long oMaxJobs = getMaxJobs();
         this.maxJobs = maxJobs;
         firePropertyChange(PROPNAME_MAXJOBS, oMaxJobs, this.maxJobs);
     }
