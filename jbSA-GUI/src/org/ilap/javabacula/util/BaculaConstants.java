@@ -306,5 +306,4 @@ public class BaculaConstants {
     public static String GETJOBSTATUS(String id) {
         return (String)jobStatus.get(id);
     }
-
 }

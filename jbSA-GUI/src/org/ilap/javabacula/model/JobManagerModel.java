@@ -33,6 +33,7 @@ import java.text.ParseException;
 import com.jgoodies.binding.list.ArrayListModel;
 import org.ilap.javabacula.network.BaculaConnection;
 import org.ilap.javabacula.network.ConnectionManager;
+import org.ilap.javabacula.util.NumberParser;
 
 /**
  *
@@ -92,7 +93,7 @@ public class JobManagerModel  extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("Enabled")) {
                             job.setEnabled(tokens[i+1] == "1");
                         } else if (tokens[i].equals("MaxJobs")) {
-                            job.setMaxJobs(new Long(tokens[i+1]));
+                            job.setMaxJobs(NumberParser.parseLong(tokens[i+1]));
                         } else if (tokens[i].equals("Resched")) {
                             job.setReschedule(tokens[i+1] == "1");
                         } else if (tokens[i].equals("Times")) {

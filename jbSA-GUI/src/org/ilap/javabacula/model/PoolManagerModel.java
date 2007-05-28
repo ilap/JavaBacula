@@ -26,6 +26,7 @@ package org.ilap.javabacula.model;
 
 import java.util.StringTokenizer;
 import com.jgoodies.binding.list.ArrayListModel;
+import org.ilap.javabacula.util.NumberParser;
 
 /**
  *
@@ -83,9 +84,9 @@ public class PoolManagerModel  extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("use_once")) {
                             pool.setUseOnce(tokens[i+1] == "1");
                         } else if (tokens[i].equals("cat_files")) {
-                            pool.setCatFiles(new Long (tokens[i+1]));
+                            pool.setCatFiles(NumberParser.parseLong (tokens[i+1]));
                         } else if (tokens[i].equals("max_vols")) {
-                            pool.setMaxVols(new Long (tokens[i+1]));
+                            pool.setMaxVols(NumberParser.parseLong (tokens[i+1]));
                         } else if (tokens[i].equals("auto_prune")) {
                             pool.setAutoPrune(tokens[i+1] == "1");
                         } else if (tokens[i].equals("VolRetention")) {
@@ -105,15 +106,15 @@ public class PoolManagerModel  extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("PurgeOldest")) {
                             pool.setPurgeOldest(tokens[i+1] == "1");
                         } else if (tokens[i].equals("MaxVolJobs")) {
-                            pool.setMaxVolJobs(new Long (tokens[i+1]));
+                            pool.setMaxVolJobs(NumberParser.parseLong (tokens[i+1]));
                         } else if (tokens[i].equals("MaxVolFiles")) {
-                            pool.setMaxVolFiles(new Long (tokens[i+1]));
+                            pool.setMaxVolFiles(NumberParser.parseLong (tokens[i+1]));
                         } else if (tokens[i].equals("MigTime")) {
                             pool.setMigTime(tokens[i+1]);
                         } else if (tokens[i].equals("MigHiBytes")) {
-                            pool.setMigHiBytes(new Long (tokens[i+1]));
+                            pool.setMigHiBytes(NumberParser.parseLong (tokens[i+1]));
                         } else if (tokens[i].equals("MigLoBytes")) {
-                            pool.setMigLoBytes(new Long (tokens[i+1]));
+                            pool.setMigLoBytes(NumberParser.parseLong (tokens[i+1]));
                         }
                     } // Even or odd
                 } // for tokens...

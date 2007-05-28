@@ -28,6 +28,7 @@ import java.util.StringTokenizer;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.*;
+import org.ilap.javabacula.util.NumberParser;
 
 import com.jgoodies.binding.list.ArrayListModel;
 
@@ -99,7 +100,7 @@ public class ActivatedJobManagerModel extends BaculaObjectManagerModel {
 
                     activatedJob = (ActivatedJob) this.getBaculaManager().createBaculaItem();
 
-                    activatedJob.setJobID(new Long(tokens[0].trim()));
+                    activatedJob.setJobID(NumberParser.parseLong(tokens[0].trim()));
                     jobName = tokens[1].trim();
                     activatedJob.setName(jobName);
                     job = getJob(jobName);
@@ -115,8 +116,8 @@ public class ActivatedJobManagerModel extends BaculaObjectManagerModel {
 
                     activatedJob.setJobType(tokens[3].trim());
                     activatedJob.setBackupLevel(tokens[4].trim());
-                    activatedJob.setJobFiles(new Long(tokens[5].trim()));
-                    activatedJob.setJobBytes(new Long(tokens[6].trim()));
+                    activatedJob.setJobFiles(NumberParser.parseLong(tokens[5].trim()));
+                    activatedJob.setJobBytes(NumberParser.parseLong(tokens[6].trim()));
                     activatedJob.setJobStatus(tokens[7].trim());
                     lm.add(activatedJob);
                 }

@@ -26,6 +26,7 @@ package org.ilap.javabacula.ui.util;
 
 import java.awt.Component;
 import java.awt.Dimension;
+
 /**
  *
  * @author ilap
@@ -47,6 +48,5 @@ public class SwingUtils {
 
         component.setLocation((screenSize.width - paneSize.width ) >> 1,
         (screenSize.height - paneSize.height) >> 1 );       
-    }
-    
+    }        
 }

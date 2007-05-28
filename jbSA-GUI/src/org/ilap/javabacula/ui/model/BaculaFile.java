@@ -29,6 +29,8 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.util.Date;
 import java.text.*;
+import org.ilap.javabacula.util.NumberParser;
+
 /**
  *
  * @author ilap
@@ -81,7 +83,7 @@ public class BaculaFile {
         this.links      = new Integer(fields[1]);
         this.owner      = fields[2];
         this.group      = fields[3];
-        this.size       = new Long(fields[4]);
+        this.size       = NumberParser.parseLong(fields[4]);
         try {
             this.setMtime(simpleDateFormat.parse(fields[5]));
         } catch(ParseException pe) {

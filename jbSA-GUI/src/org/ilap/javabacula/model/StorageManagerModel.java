@@ -30,6 +30,7 @@ import com.jgoodies.binding.list.ArrayListModel;
 
 import org.ilap.javabacula.util.*;
 import org.ilap.javabacula.network.*;
+import org.ilap.javabacula.util.NumberParser;
 
 /**
  *
@@ -82,7 +83,7 @@ public class StorageManagerModel extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("SDport")) {
                             std.setPort(new Integer(tokens[i+1]));
                         } else if (tokens[i].equals("MaxJobs")) {
-                            std.setMaxJobs(new Long(tokens[i+1]));
+                            std.setMaxJobs(NumberParser.parseLong(tokens[i+1]));
                         } else if (tokens[i].equals("DeviceName")) {
                             std.setDeviceName(tokens[i+1]);
                         } else if (tokens[i].equals("MediaType")) {

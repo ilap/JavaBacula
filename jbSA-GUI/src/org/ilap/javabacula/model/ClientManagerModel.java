@@ -27,7 +27,7 @@ import org.ilap.javabacula.network.*;
 import java.util.StringTokenizer;
 
 import com.jgoodies.binding.list.ArrayListModel;
-
+import org.ilap.javabacula.util.NumberParser;
 
 /**
  *
@@ -83,7 +83,7 @@ public class ClientManagerModel extends BaculaObjectManagerModel {
                         } else if (tokens[i].equals("FDport")) {
                             cld.setPort(new Integer(tokens[i+1]));
                         } else if (tokens[i].equals("MaxJobs")) {
-                            cld.setMaxJobs(new Long(tokens[i+1]));
+                            cld.setMaxJobs(NumberParser.parseLong(tokens[i+1]));
                         } else if (tokens[i].equals("JobRetention")) {
                             cld.setJobRetention(tokens[i+1]);
                         } else if (tokens[i].equals("FileRetention")) {
